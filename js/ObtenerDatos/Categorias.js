@@ -66,11 +66,12 @@ const mostrarRecetas = ( recetas = [] ) => {
     // Si no hay recetas
     const noResultados = document.createElement('h2');
     noResultados.classList.add('text-center', 'text-black', 'my-5');
-    // si estamos en la página de favoritos, no mostrar el mensaje
-    if( !recetas.length && window.location.pathname.includes('index.html') ) {
-        noResultados.textContent = recetas.length ? 'Resultados' : 'No hay recetas encontradas';
+    noResultados.textContent = recetas.length ? 'Resultados' : 'No hay recetas encontradas';
+    
+    // si No estamos en index.html no mostrar el titulo
+    if( !window.location.pathname.includes('index.html') ) {
+        noResultados.classList.add('d-none');
     }
-    noResultados.textContent = null
     recetasDiv.appendChild(noResultados);
 
 

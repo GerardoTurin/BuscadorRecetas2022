@@ -74,6 +74,7 @@ const eliminarFavorito = ( id ) => {
     if( favoritosDiv ) {
         limpiarHTML(favoritosDiv);
         mostrarRecetas(nuevosFavoritos);
+        obtenerFavoritos(favoritos);
     }
 }
 
@@ -81,7 +82,7 @@ const eliminarFavorito = ( id ) => {
 
 // Obtenemos Favoritos
 const obtenerFavoritos = () => {
-    const favoritos = JSON.parse( localStorage.getItem('favoritos') ) || [];
+    const favoritos = JSON.parse( localStorage.getItem('favoritos') ) ?? [];
     if( favoritos.length ) {
         mostrarRecetas(favoritos);
     } else {
@@ -90,9 +91,6 @@ const obtenerFavoritos = () => {
         nullFavoritos.textContent = 'No hay favoritos';
         favoritosDiv.appendChild(nullFavoritos);
     }
-
-    
-
 }
 
 
