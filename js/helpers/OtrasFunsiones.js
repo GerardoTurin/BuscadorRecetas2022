@@ -3,6 +3,40 @@ import { mostrarRecetas } from "../ObtenerDatos/Categorias.js";
 // Div donde se mostrarán los favoritos
 const favoritosDiv = document.querySelector('.favoritos');
 
+// Dark Mode
+const btnSwitch = document.querySelector('#switch');
+
+// nav bg.secondary -> bg-dark
+const nav = document.querySelector('.navbar');
+
+btnSwitch.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    nav.classList.toggle('bg-dark');
+
+
+    // Guardamos el modo en localstorage
+    if( document.body.classList.contains('dark') ) {
+        localStorage.setItem('dark-mode', 'true');
+    } else {
+        localStorage.setItem('dark-mode', 'false');
+    }
+});
+
+
+// Obtenemos el modo actual funcion
+const modoActual = () => {
+    if( localStorage.getItem('dark-mode') === 'true' ) {
+        nav.classList.add('bg-dark');
+        document.body.classList.add('dark');
+        
+        // Cambiamos el switch
+        btnSwitch.checked = true;
+    } else {
+        nav.classList.remove('bg-dark');
+        document.body.classList.remove('dark');
+    }
+}
+
 
 
 
@@ -33,6 +67,7 @@ const mostrarToast = ( mensaje, clase ) => {
 
     
     const toast = new bootstrap.Toast(toastDiv);    // Creamos una instancia de Toast
+    toastBody.classList.add('text-dark');
     toastBody.textContent = mensaje;
 
     toast.show();   // Mostramos el Toast
@@ -101,11 +136,17 @@ if( favoritosDiv ) {
 
 
 
+
+
+
+
+
 export {
     limpiarHTML,
     guardarFavorito,
     existeFavorito,
     eliminarFavorito,
     mostrarToast,
-    obtenerFavoritos
+    obtenerFavoritos,
+    modoActual
 }

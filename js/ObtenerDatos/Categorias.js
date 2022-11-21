@@ -65,13 +65,20 @@ const mostrarRecetas = ( recetas = [] ) => {
 
     // Si no hay recetas
     const noResultados = document.createElement('h2');
-    noResultados.classList.add('text-center', 'text-black', 'my-5');
+    noResultados.classList.add('text-center', 'my-5');
     noResultados.textContent = recetas.length ? 'Resultados' : 'No hay recetas encontradas';
+
+    // si dark es true se agrega la clase text-light al h2
+    if( document.body.classList.contains('dark') ){
+        noResultados.classList.add('text-light');
+    }
     
     // si No estamos en index.html no mostrar el titulo
     if( !window.location.pathname.includes('index.html') ) {
         noResultados.classList.add('d-none');
     }
+
+
     recetasDiv.appendChild(noResultados);
 
 
@@ -101,7 +108,7 @@ const mostrarRecetas = ( recetas = [] ) => {
 
         // Receta Titulo
         const recetaTitulo = document.createElement('h3');
-        recetaTitulo.classList.add('card-title', 'mb-3');
+        recetaTitulo.classList.add('card-title','text-dark' , 'mb-3');
         recetaTitulo.textContent = strMeal ?? receta.nombre;
 
         // Receta Boton
@@ -163,14 +170,15 @@ const mostrarRecetaModal = ( receta ) => {
     
     // Crear h3 y parrafo
     const modalInstruccion = document.createElement('h3');
-    modalInstruccion.classList.add('my-3');
+    modalInstruccion.classList.add('my-3', 'text-dark');
     modalInstruccion.textContent = 'Instrucciones';
     
     const modalParrafo = document.createElement('p');
+    modalParrafo.classList.add('text-dark');
     modalParrafo.textContent = strInstructions;
 
     const modalIngredientes = document.createElement('h4');
-    modalIngredientes.classList.add('my-3');
+    modalIngredientes.classList.add('text-dark', 'my-3');
     modalIngredientes.textContent = 'Ingredientes y Cantidades';
 
 
@@ -214,11 +222,19 @@ const mostrarRecetaModal = ( receta ) => {
     // Crear Boton de Cerrar y Favoritos
     const btnFavoritos = document.createElement('button');
     btnFavoritos.classList.add('btn', 'btn-primary', 'col');
-    btnFavoritos.textContent = existeFavorito(idMeal) ? 'Eliminar Favorito' : 'Guardar Favorito';
 
+    
+    // Verificar si la receta ya esta en favoritos
+    if( existeFavorito(idMeal) ) {
+        btnFavoritos.classList.add('btn-danger');
+    }
+    
+    btnFavoritos.textContent = existeFavorito(idMeal) ? 'Eliminar Favorito' : 'Guardar Favorito';
+    
     // LocalStorage
     btnFavoritos.onclick = () => {
-
+        btnFavoritos.classList.toggle('btn-danger');
+        
         // Si ya existe en favoritos, lo eliminamos
         if( existeFavorito(idMeal) ) {
             eliminarFavorito(idMeal);
@@ -226,7 +242,7 @@ const mostrarRecetaModal = ( receta ) => {
             mostrarToast('Eliminado Correctamente', 'bg-danger');
             return;
         }
-
+        
         // Guardar
         guardarFavorito({
             id: idMeal,
@@ -234,6 +250,7 @@ const mostrarRecetaModal = ( receta ) => {
             imagen: strMealThumb
         });
         btnFavoritos.textContent = 'Eliminar Favorito';
+        btnFavoritos.classList.add('btn-danger');
         mostrarToast('Agregado Correctamente', 'bg-primary');
     };
 
