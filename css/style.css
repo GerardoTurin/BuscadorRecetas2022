@@ -1,17 +1,4 @@
-body {
-    transition: .4s;
-}
 
-.buscador {
-  font-family: 'Lobster', cursive;
-}
-
-
-
-body.dark {
-    background-color: rgb(22, 21, 21);
-    color: #fff;
-}
 
 
 
@@ -74,3 +61,32 @@ body.dark {
     /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
     box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
   }
+
+
+
+  body {
+    /*quitamos la transition
+    establecemos opacida a cero*/
+    opacity : 0;
+}
+
+.light-mode {
+  background: linear-gradient(to bottom, #e52d27, #b31217);
+}
+
+.dark-mode {
+  background: linear-gradient(to bottom, #232526, #414345);
+}
+
+.buscador {
+  font-family: 'Lobster', cursive;
+}
+
+
+
+body.dark {
+    background-color: rgb(22, 21, 21);
+    color: #fff;
+}
+
+

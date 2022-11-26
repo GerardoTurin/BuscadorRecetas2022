@@ -1,5 +1,8 @@
 import { mostrarRecetas } from "../ObtenerDatos/Categorias.js";
 
+// Variable para controlar la transicion 
+let first = true;
+
 // Div donde se mostrarán los favoritos
 const favoritosDiv = document.querySelector('.favoritos');
 
@@ -9,9 +12,20 @@ const btnSwitch = document.querySelector('#switch');
 // nav bg.secondary -> bg-dark
 const nav = document.querySelector('.navbar');
 
+
 btnSwitch.addEventListener('click', () => {
+    //si first es false, establecemos la transición a 0.4s
+    //establecemos first a true para que no vuelva a entrar a la
+    //condicion
+    !first ?
+    [document.body.style.transition="0.4s",
+    nav.style.transition="0.4s",first=true]:null;
+
+    document.body.style.transition="0.4s";
+    nav.style.transition="0.4s";
+
     document.body.classList.toggle('dark');
-    nav.classList.toggle('bg-dark');
+    nav.classList.toggle('dark-mode');
 
 
     // Guardamos el modo en localstorage
@@ -26,7 +40,7 @@ btnSwitch.addEventListener('click', () => {
 // Obtenemos el modo actual funcion
 const modoActual = () => {
     if( localStorage.getItem('dark-mode') === 'true' ) {
-        nav.classList.add('bg-dark');
+        nav.classList.add('dark-mode');
         document.body.classList.add('dark');
         
         // Cambiamos el switch
@@ -35,6 +49,10 @@ const modoActual = () => {
         nav.classList.remove('bg-dark');
         document.body.classList.remove('dark');
     }
+
+    //hacemos visible el cuerpo del documento inmediatamente despues
+    //de establecer el modo obscuro o claro;
+    document.body.style.opacity="1";
 }
 
 
