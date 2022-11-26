@@ -12,6 +12,10 @@ const btnSwitch = document.querySelector('#switch');
 // nav bg.secondary -> bg-dark
 const nav = document.querySelector('.navbar');
 
+const slider = document.querySelector('.slider');
+
+//const footer = document.querySelector('footer');
+
 
 btnSwitch.addEventListener('click', () => {
     //si first es false, establecemos la transición a 0.4s
@@ -24,10 +28,11 @@ btnSwitch.addEventListener('click', () => {
     document.body.style.transition="0.4s";
     nav.style.transition="0.4s";
 
+
     document.body.classList.toggle('dark');
     nav.classList.toggle('dark-mode');
-
-
+    
+    
     // Guardamos el modo en localstorage
     if( document.body.classList.contains('dark') ) {
         localStorage.setItem('dark-mode', 'true');
@@ -40,20 +45,36 @@ btnSwitch.addEventListener('click', () => {
 // Obtenemos el modo actual funcion
 const modoActual = () => {
     if( localStorage.getItem('dark-mode') === 'true' ) {
+        btnSwitch.checked = true;
         nav.classList.add('dark-mode');
         document.body.classList.add('dark');
+        slider.style.transition="0s";
+        slider.style.setProperty('--transition-slider', '0s');
         
-        // Cambiamos el switch
-        btnSwitch.checked = true;
+        
     } else {
-        nav.classList.remove('bg-dark');
+        nav.classList.remove('dark-mode');
         document.body.classList.remove('dark');
     }
+    
+
+    // si se recarga la pagina, se establece la transicion a 0s
+    // para que no se vea la transicion
+    setTimeout(() => {
+        slider.style.setProperty('--transition-slider', '0.4s');
+        slider.style.transition="0.4s";
+    }, 1000);
+
 
     //hacemos visible el cuerpo del documento inmediatamente despues
     //de establecer el modo obscuro o claro;
     document.body.style.opacity="1";
 }
+
+
+
+/*   Socials Items - Hover  */
+const socials = document.querySelectorAll('.socials-item');
 
 
 

@@ -6,8 +6,8 @@ import { obtenerCategorias } from "./ObtenerDatos/Categorias.js";
 
 // Iniciar app
 function iniciarApp() {
-    modoActual();
     obtenerCategorias();
+    modoActual();
 }
 
 

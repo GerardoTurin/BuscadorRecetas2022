@@ -1,5 +1,42 @@
+/*  crear variables */
+:root {
+  --transition-slider: 0.4s;
+}
 
 
+
+
+
+body {
+  /*quitamos la transition
+  establecemos opacida a cero*/
+  opacity : 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  /* quitar scroll horizontal */
+  overflow-x: hidden;
+}
+
+
+.light-mode {
+background: linear-gradient(to bottom, #e52d27, #b31217);
+}
+
+.dark-mode {
+background: linear-gradient(to bottom, #232526, #414345);
+}
+
+.buscador {
+font-family: 'Lobster', cursive;
+}
+
+
+body.dark {
+  background-color: rgb(22, 21, 21);
+  color: #fff;
+}
 
 
 
@@ -33,9 +70,13 @@
     right: 0;
     bottom: 0;
     background-color: #f4f4f5;
-    transition: .4s;
     border-radius: 30px;
-  }
+    transition: var(--transition-slider);
+    -webkit-transition: var(--transition-slider);
+    -moz-transition: var(--transition-slider);
+    -ms-transition: var(--transition-slider);
+    -o-transition: var(--transition-slider);
+}
   
   .slider:before {
     position: absolute;
@@ -47,9 +88,12 @@
     top: 50%;
     transform: translateY(-50%);
     background: linear-gradient(40deg,#ff0080,#ff8c00 70%);
-    ;
-    transition: .4s;
-  }
+    transition: var(--transition-slider);
+    -webkit-transition: var(--transition-slider);
+    -moz-transition: var(--transition-slider);
+    -ms-transition: var(--transition-slider);
+    -o-transition: var(--transition-slider);
+}
   
   input:checked + .slider {
     background-color: #131317;
@@ -64,29 +108,42 @@
 
 
 
-  body {
-    /*quitamos la transition
-    establecemos opacida a cero*/
-    opacity : 0;
+
+
+ /* Socials */
+
+  .socials-item {
+  font-size: 1.5em;
+  color: black;
 }
 
-.light-mode {
-  background: linear-gradient(to bottom, #e52d27, #b31217);
-}
-
-.dark-mode {
-  background: linear-gradient(to bottom, #232526, #414345);
-}
-
-.buscador {
-  font-family: 'Lobster', cursive;
+.socials-item:hover {
+  color: black;
 }
 
 
-
-body.dark {
-    background-color: rgb(22, 21, 21);
-    color: #fff;
+body.dark .socials-item {
+  color: darkgrey;
 }
+
+
+
+/* footer {
+  background-color: #fff;
+}
+
+
+body.dark footer {
+  background-color: rgb(22, 21, 21);
+} */
+
+
+
+
+
+
+
+
+
 
 
