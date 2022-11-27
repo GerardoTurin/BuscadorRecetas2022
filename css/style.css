@@ -112,18 +112,28 @@ body.dark {
 
  /* Socials */
 
-  .socials-item {
-  font-size: 1.5em;
+ .socials {
+  font-size: 1.2em;
+ }
+
+ .socials .socials-item {
   color: black;
 }
 
 .socials-item:hover {
-  color: black;
+  color: red;
 }
 
 
 body.dark .socials-item {
   color: darkgrey;
+}
+body.dark .copy {
+  color: darkgrey;
+}
+
+body.dark .socials-item:hover {
+  color: red;
 }
 
 
