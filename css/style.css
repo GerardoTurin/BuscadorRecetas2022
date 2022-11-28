@@ -125,6 +125,29 @@ body.dark {
 }
 
 
+/* icono de facebook color default hover */
+.socials-item:nth-child(1):hover {
+  color: #3b5998;
+}
+
+
+/* icono de instagram color default hover */
+.socials-item:nth-child(2):hover {
+  color: #e4405f;
+}
+
+/* icono de github color default hover */
+.socials-item:nth-child(3):hover {
+  color: #333;
+}
+
+/* icono de linkedin color default hover */
+.socials-item:nth-child(4):hover {
+  color: #0077b5;
+}
+
+
+
 body.dark .socials-item {
   color: darkgrey;
 }
@@ -133,7 +156,30 @@ body.dark .copy {
 }
 
 body.dark .socials-item:hover {
-  color: red;
+  background: white;
+}
+
+
+
+/* icono de facebook color default hover */
+body.dark .socials-item:nth-child(1):hover {
+  color: #3b5998;
+}
+
+
+/* icono de instagram color default hover */
+body.dark .socials-item:nth-child(2):hover {
+  color: #e4405f;
+}
+
+/* icono de github color default hover */
+body.dark .socials-item:nth-child(3):hover {
+  color: #333;
+}
+
+/* icono de linkedin color default hover */
+body.dark .socials-item:nth-child(4):hover {
+  color: #0077b5;
 }
 
 
