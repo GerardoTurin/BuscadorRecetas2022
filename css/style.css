@@ -112,11 +112,11 @@ body.dark {
 
  /* Socials */
 
- .socials {
+.socials {
   font-size: 1.2em;
- }
+}
 
- .socials .socials-item {
+.socials .socials-item {
   color: black;
 }
 
@@ -155,9 +155,10 @@ body.dark .copy {
   color: darkgrey;
 }
 
-body.dark .socials-item:hover {
+/* body.dark .socials-item:hover {
   background: white;
-}
+  border-radius: 50%;
+} */
 
 
 
@@ -185,11 +186,11 @@ body.dark .socials-item:nth-child(4):hover {
 
 
 /* footer {
-  background-color: #fff;
-}
+  border: 1px solid #fff;
+} */
 
 
-body.dark footer {
+/* body.dark footer {
   background-color: rgb(22, 21, 21);
 } */
 
